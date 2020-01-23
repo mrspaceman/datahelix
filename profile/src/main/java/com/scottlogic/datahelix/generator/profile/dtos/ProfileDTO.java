@@ -24,5 +24,4 @@ public class ProfileDTO {
     public String description;
     public List<FieldDTO> fields;
     public List<ConstraintDTO> constraints;
-    public List<Object> relationships;
 }

@@ -63,7 +63,7 @@ public class CreateProfileHandler extends CommandHandler<CreateProfile, Profile>
         constraints.addAll(createSpecificTypeConstraints(fields));
         constraints.addAll(createCustomGeneratorConstraints(fields));
 
-        return CommandResult.success(new Profile(command.profileDTO.description, fields, constraints, relationships));
+        return CommandResult.success(new Profile(command.profileDTO.description, fields, constraints));
     }
 
     private List<Constraint> createNullableConstraints(Fields fields)

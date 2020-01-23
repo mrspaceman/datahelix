@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.scottlogic.datahelix.generator.common.ValidationException;
 import com.scottlogic.datahelix.generator.profile.dtos.ProfileDTO;
+import com.scottlogic.datahelix.generator.profile.dtos.RelationshipProfileDTO;
 import com.scottlogic.datahelix.generator.profile.reader.FileReader;
 
 public class ProfileDeserialiser
@@ -31,6 +32,9 @@ public class ProfileDeserialiser
         mapper.disable(DeserializationFeature.WRAP_EXCEPTIONS);
         mapper.enable(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS);
         try {
+            if (json.contains("relationships")){
+                return mapper.readerFor(RelationshipProfileDTO.class).readValue(json);
+            }
             return mapper.readerFor(ProfileDTO.class).readValue(json);
         } catch (Exception e) {
             throw new ValidationException("Profile json is not valid\n" + e.getMessage());

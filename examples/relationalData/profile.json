@@ -1,7 +1,8 @@
 {
   "fields": [
     { "name": "id", "type": "integer", "nullable": false },
-    { "name": "name", "type": "string", "nullable": false },
+    { "name": "firstname", "type": "faker.name.firstName", "nullable": false },
+    { "name": "lastname", "type": "faker.name.lastName", "nullable": false },
     { "name": "registrationDate", "type": "datetime", "nullable": false },
     { "name": "lastOrderDate", "type": "integer", "nullable": false }
   ],
@@ -16,7 +17,7 @@
     "profile": {
       "fields": [
         { "name": "id", "type": "integer", "nullable": false },
-        { "name": "date", "type": "dateTime", "nullable": false }
+        { "name": "date", "type": "datetime", "nullable": false }
       ],
       "constraints": [
         { "field": "date", "afterOrAtField": "registrationDate", "relationship": "customer" }

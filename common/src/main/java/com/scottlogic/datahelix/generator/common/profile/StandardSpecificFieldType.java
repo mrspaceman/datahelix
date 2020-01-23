@@ -58,7 +58,7 @@ public enum StandardSpecificFieldType {
 
     public static StandardSpecificFieldType from(String type) {
         return Arrays.stream(StandardSpecificFieldType.values())
-            .filter(sft -> sft.type.equals(type))
+            .filter(sft -> sft.type.equalsIgnoreCase(type))
             .findAny()
             .orElseThrow(() -> new IllegalStateException("No data types with type " + type));
     }
