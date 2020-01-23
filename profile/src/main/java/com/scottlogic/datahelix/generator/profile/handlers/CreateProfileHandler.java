@@ -25,11 +25,13 @@ import com.scottlogic.datahelix.generator.common.validators.Validator;
 import com.scottlogic.datahelix.generator.core.profile.Profile;
 import com.scottlogic.datahelix.generator.core.profile.constraints.Constraint;
 import com.scottlogic.datahelix.generator.core.profile.constraints.atomic.NotNullConstraint;
+import com.scottlogic.datahelix.generator.core.profile.relationships.Relationship;
 import com.scottlogic.datahelix.generator.profile.commands.CreateProfile;
 import com.scottlogic.datahelix.generator.profile.custom.CustomConstraintFactory;
 import com.scottlogic.datahelix.generator.profile.services.ConstraintService;
 import com.scottlogic.datahelix.generator.profile.services.FieldService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -55,12 +57,13 @@ public class CreateProfileHandler extends CommandHandler<CreateProfile, Profile>
     {
         Fields fields = fieldService.createFields(command.profileDTO);
         List<Constraint> constraints = constraintService.createConstraints(command.profileDTO.constraints, fields);
+        List<Relationship> relationships=new ArrayList<>();
 
         constraints.addAll(createNullableConstraints(fields));
         constraints.addAll(createSpecificTypeConstraints(fields));
         constraints.addAll(createCustomGeneratorConstraints(fields));
 
-        return CommandResult.success(new Profile(command.profileDTO.description, fields, constraints));
+        return CommandResult.success(new Profile(command.profileDTO.description, fields, constraints, relationships));
     }
 
     private List<Constraint> createNullableConstraints(Fields fields)

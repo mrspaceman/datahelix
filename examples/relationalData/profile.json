@@ -1,0 +1,66 @@
+{
+  "fields": [
+    {
+      "name": "user_id",
+      "type": "string",
+      "nullable": false
+    },
+    {
+      "name": "user_firstname",
+      "type": "string",
+      "nullable": false
+    },    {
+      "name": "user_lastname",
+      "type": "string",
+      "nullable": false
+    },
+    {
+      "name": "user_email",
+      "type": "string",
+      "nullable": false
+    },
+    {
+      "name": "order_id",
+      "type": "integer",
+      "nullable": false
+    },
+    {
+      "name": "order_item_type",
+      "type": "string",
+      "nullable": false
+    },
+    {
+      "name": "order_item_qty",
+      "type": "integer",
+      "min":1,
+      "max":100,
+      "nullable": false
+    },
+    {
+      "name": "order_item_price",
+      "type": "integer",
+      "min":0,
+      "max":1000,
+      "nullable": false
+    }
+  ],
+  "constraints": [
+    {
+      "field": "first_name",
+      "matchingRegex": "(Joh?n|Mar[yk])"
+    },
+    {
+      "field": "first_name",
+      "matchingRegex": "M.*"
+    },
+    {
+      "not": {
+        "field": "first_name",
+        "equalTo": "Mary"
+      }
+    }
+  ],
+  "relationships": [
+
+  ]
+}

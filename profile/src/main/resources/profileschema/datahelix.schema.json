@@ -30,6 +30,11 @@
       "items": {
         "$ref": "#/definitions/constraint"
       }
+    },
+    "relationships": {
+      "title": "The relationships between data items",
+      "type": "array",
+      "additionalItems": true
     }
   },
   "definitions": {

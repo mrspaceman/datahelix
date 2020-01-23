@@ -43,6 +43,7 @@ public class CucumberProfileReader extends JsonProfileReader {
         ProfileDTO profileDTO = new ProfileDTO();
         profileDTO.fields = state.profileFields;
         profileDTO.constraints = state.constraints;
+        profileDTO.relationships = state.relationships;
         return new ProfileSerialiser().serialise(profileDTO);
     }
 

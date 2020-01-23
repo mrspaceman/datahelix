@@ -14,15 +14,10 @@
  * limitations under the License.
  */
 
-package com.scottlogic.datahelix.generator.profile.dtos;
+package com.scottlogic.datahelix.generator.core.profile.relationships;
 
-import com.scottlogic.datahelix.generator.profile.dtos.constraints.ConstraintDTO;
-
-import java.util.List;
-
-public class ProfileDTO {
-    public String description;
-    public List<FieldDTO> fields;
-    public List<ConstraintDTO> constraints;
-    public List<Object> relationships;
+public interface Relationship
+{
+    Relationship negate();
 }
+

@@ -63,6 +63,7 @@ public class CucumberTestState {
     List<Map<String, Object>> generatedObjects = new ArrayList<>();
     List<FieldDTO> profileFields = new ArrayList<>();
     List<ConstraintDTO> constraints = new ArrayList<>();
+    List<Object> relationships = new ArrayList<>();
     List<Exception> testExceptions = new ArrayList<>();
     Map<String, List<List<String>>> inMapFiles = new HashMap<>();
 
@@ -143,11 +144,11 @@ public class CucumberTestState {
                 }};
             case IN_SET:
                 return _value instanceof String
-                    ? new InSetFromFileConstraintDTO() {{
+                        ? new InSetFromFileConstraintDTO() {{
                     field = fieldName;
                     file = (String) _value;
                 }}
-                    : new InSetConstraintDTO() {{
+                        : new InSetConstraintDTO() {{
                     field = fieldName;
                     values = (List<Object>) _value;
                 }};
@@ -227,8 +228,7 @@ public class CucumberTestState {
                     value = (String) _value;
                 }};
             case GENERATOR:
-                return new GeneratorConstraintDTO()
-                {{
+                return new GeneratorConstraintDTO() {{
                     field = fieldName;
                     generator = (String) _value;
                 }};
@@ -376,32 +376,32 @@ public class CucumberTestState {
 
     public void setFieldUnique(String fieldName) {
         profileFields = profileFields.stream()
-            .map(fieldDTO -> {
-                if (fieldDTO.name.equals(fieldName)) {
-                    fieldDTO.unique = true;
-                }
-                return fieldDTO;
-            }).collect(Collectors.toList());
+                .map(fieldDTO -> {
+                    if (fieldDTO.name.equals(fieldName)) {
+                        fieldDTO.unique = true;
+                    }
+                    return fieldDTO;
+                }).collect(Collectors.toList());
     }
 
     public void setFieldType(String fieldName, String type) {
         profileFields = profileFields.stream()
-            .map(fieldDTO -> {
-                if (fieldDTO.name.equals(fieldName)) {
-                    fieldDTO.type = type;
-                }
-                return fieldDTO;
-            }).collect(Collectors.toList());
+                .map(fieldDTO -> {
+                    if (fieldDTO.name.equals(fieldName)) {
+                        fieldDTO.type = type;
+                    }
+                    return fieldDTO;
+                }).collect(Collectors.toList());
     }
 
     public void setFieldFormatting(String fieldName, String formatting) {
         profileFields = profileFields.stream()
-            .map(fieldDTO -> {
-                if (fieldDTO.name.equals(fieldName)) {
-                    fieldDTO.formatting = formatting;
-                }
-                return fieldDTO;
-            }).collect(Collectors.toList());
+                .map(fieldDTO -> {
+                    if (fieldDTO.name.equals(fieldName)) {
+                        fieldDTO.formatting = formatting;
+                    }
+                    return fieldDTO;
+                }).collect(Collectors.toList());
     }
 
     private static class NestedConstraint {
