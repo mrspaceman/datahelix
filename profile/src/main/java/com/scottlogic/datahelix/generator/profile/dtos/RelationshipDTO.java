@@ -10,5 +10,5 @@ public class RelationshipDTO {
     public String cardinality;
     public int minItems;
     public int maxItems;
-    public Profile profile;
+    public ProfileDTO profile;
 }

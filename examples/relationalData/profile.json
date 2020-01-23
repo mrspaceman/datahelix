@@ -20,7 +20,7 @@
         { "name": "date", "type": "datetime", "nullable": false }
       ],
       "constraints": [
-        { "field": "date", "afterOrAtField": "registrationDate", "relationship": "customer" }
+        { "field": "date", "afterOrAtField": "registrationDate" }
       ]
     }
   } ]
